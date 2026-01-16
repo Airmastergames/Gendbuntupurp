@@ -1,0 +1,204 @@
+.messagerie {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.messagerie-layout {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 1.5rem;
+  height: calc(100vh - 200px);
+}
+
+.messagerie-sidebar {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.folder-tabs {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.folder-tab {
+  padding: 1rem;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.folder-tab:hover {
+  background-color: var(--color-bg-hover);
+  color: var(--color-text-primary);
+}
+
+.folder-tab.active {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-accent-primary);
+  font-weight: 500;
+}
+
+.messages-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.message-item {
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.message-item:hover {
+  background-color: var(--color-bg-hover);
+}
+
+.message-item.selected {
+  background-color: var(--color-bg-tertiary);
+  border-left: 3px solid var(--color-accent-primary);
+}
+
+.message-item.unread {
+  font-weight: 500;
+}
+
+.message-subject {
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.message-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.messagerie-content {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.message-view {
+  height: 100%;
+}
+
+.message-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.message-header h2 {
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+.message-info p {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.message-body {
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin-bottom: 2rem;
+}
+
+.message-attachments {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.message-attachments h3 {
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.attachment-link {
+  display: block;
+  padding: 0.75rem;
+  background-color: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  transition: all 0.2s;
+}
+
+.attachment-link:hover {
+  background-color: var(--color-bg-hover);
+  border-color: var(--color-accent-primary);
+}
+
+.no-message-selected {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+
+.empty-messages {
+  padding: 2rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.message-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.recipients-list {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-color: var(--color-bg-tertiary);
+}
+
+.recipient-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.recipient-checkbox:hover {
+  background-color: var(--color-bg-hover);
+}
+
+.recipient-checkbox input[type="checkbox"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+.recipient-checkbox span {
+  color: var(--color-text-primary);
+  user-select: none;
+}

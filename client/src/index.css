@@ -1,0 +1,95 @@
+/* GendBuntu - Thème militaire sombre */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Couleurs principales - Thème militaire sombre */
+  --color-bg-primary: #0a0e1a;
+  --color-bg-secondary: #141b2d;
+  --color-bg-tertiary: #1e2742;
+  --color-bg-hover: #252f4a;
+  
+  /* Couleurs d'accent - Bleu militaire */
+  --color-accent-primary: #1e5f8e;
+  --color-accent-secondary: #2a7bb8;
+  --color-accent-hover: #3a8bc8;
+  
+  /* Couleurs de texte */
+  --color-text-primary: #e8eaf0;
+  --color-text-secondary: #b8bcc8;
+  --color-text-muted: #7a7f8f;
+  
+  /* Couleurs de statut */
+  --color-success: #2d8659;
+  --color-warning: #d4a574;
+  --color-error: #c94a4a;
+  --color-info: #4a90e2;
+  
+  /* Bordures */
+  --color-border: #2a3441;
+  --color-border-light: #1a2332;
+  
+  /* Ombres */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-secondary);
+}
+
+/* Utilitaires */
+.text-center {
+  text-align: center;
+}
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 1.5rem; }
+.p-4 { padding: 2rem; }
