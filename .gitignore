@@ -40,3 +40,12 @@ server/uploads/
 # Database
 *.sqlite
 *.db
+
+# Backups
+backups/
+*.sql.gz
+*.sql
+
+# Docker
+.dockerignore
+docker-compose.override.yml

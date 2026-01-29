@@ -2,6 +2,8 @@
 
 Ce guide vous explique comment déployer GendBuntu sur un serveur VPS Linux OVH.
 
+> 📖 **Pour un guide complet avec Git et mise à jour automatique, consultez [DEPLOY_COMPLET.md](DEPLOY_COMPLET.md)**
+
 ## Prérequis
 
 - Un VPS Linux OVH (Ubuntu 20.04+ ou Debian 11+ recommandé)
