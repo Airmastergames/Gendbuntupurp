@@ -47,9 +47,9 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'GendBuntu API is running' });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Serveur GendBuntu démarré sur le port ${PORT}`);
-  console.log(`📡 API disponible sur http://localhost:${PORT}/api`);
+  console.log(`📡 API disponible sur http://0.0.0.0:${PORT}/api`);
 }).on('error', (err: any) => {
   if (err.code === 'EADDRINUSE') {
     console.error(`❌ Erreur: Le port ${PORT} est déjà utilisé.`);
