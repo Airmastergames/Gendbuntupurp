@@ -21,6 +21,9 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Installer wget pour le healthcheck
+RUN apk add --no-cache wget
+
 # Copier les fichiers nécessaires
 COPY package*.json ./
 COPY --from=builder /app/dist ./dist

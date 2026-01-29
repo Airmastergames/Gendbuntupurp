@@ -112,11 +112,40 @@ Le script va:
 # Voir les logs
 docker-compose logs -f
 
+# Voir les logs de la base de données (pour vérifier l'initialisation)
+docker-compose logs postgres
+
 # Voir l'état des services
 docker-compose ps
 
 # Tester l'API
 curl http://localhost:5000/api/health
+
+# Vérifier la connexion à la base de données
+docker-compose exec postgres psql -U postgres -d gendbuntu -c "SELECT COUNT(*) FROM roles;"
+```
+
+### Vérification de l'initialisation de la base de données
+
+Les scripts SQL (`schema.sql` et `seed.sql`) sont automatiquement exécutés lors du **premier démarrage** de PostgreSQL. Pour vérifier :
+
+```bash
+# Vérifier que les tables existent
+docker-compose exec postgres psql -U postgres -d gendbuntu -c "\dt"
+
+# Vérifier les rôles
+docker-compose exec postgres psql -U postgres -d gendbuntu -c "SELECT * FROM roles;"
+
+# Vérifier les utilisateurs
+docker-compose exec postgres psql -U postgres -d gendbuntu -c "SELECT email, nom, prenom FROM users LIMIT 5;"
+```
+
+**Note importante :** Si vous supprimez le volume `postgres_data` et redémarrez, les scripts SQL seront réexécutés automatiquement :
+
+```bash
+# ATTENTION : Cela supprimera toutes les données !
+docker-compose down -v
+docker-compose up -d
 ```
 
 ## Configuration avec un nom de domaine (optionnel)
@@ -234,6 +263,34 @@ docker-compose exec server sh
 # Dans le shell: ping postgres
 ```
 
+### La base de données ne s'initialise pas
+
+Si les scripts SQL ne sont pas exécutés automatiquement :
+
+```bash
+# Vérifier les logs de PostgreSQL
+docker-compose logs postgres | grep -i "init\|schema\|seed"
+
+# Exécuter manuellement le schéma
+docker-compose exec -T postgres psql -U postgres -d gendbuntu < database/schema.sql
+
+# Exécuter manuellement les données initiales
+docker-compose exec -T postgres psql -U postgres -d gendbuntu < database/seed.sql
+```
+
+### Erreur de connexion à la base de données
+
+```bash
+# Vérifier que PostgreSQL est démarré
+docker-compose ps postgres
+
+# Vérifier les variables d'environnement
+docker-compose exec server env | grep DB_
+
+# Tester la connexion depuis le conteneur serveur
+docker-compose exec server sh -c "apk add --no-cache postgresql-client && psql -h postgres -U postgres -d gendbuntu -c 'SELECT NOW();'"
+```
+
 ### Le client ne se connecte pas à l'API
 
 1. Vérifiez que `REACT_APP_API_URL` dans `.env` pointe vers la bonne URL
@@ -252,10 +309,26 @@ chmod -R 755 server/uploads
 
 ```bash
 # Arrêter et supprimer tous les conteneurs et volumes
+# ⚠️ ATTENTION : Cela supprimera toutes les données de la base de données !
 docker-compose down -v
 
 # Reconstruire et redémarrer
 docker-compose up -d --build
+```
+
+### Réinitialiser la base de données (avec perte de données)
+
+Si vous devez réinitialiser complètement la base de données :
+
+```bash
+# Arrêter les services
+docker-compose down
+
+# Supprimer le volume de données
+docker volume rm gendbuntupurp_postgres_data
+
+# Redémarrer (les scripts SQL seront réexécutés)
+docker-compose up -d
 ```
 
 ## Sécurité
